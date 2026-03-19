@@ -1,8 +1,10 @@
-#include <iostream>
-#include <string>
-#include <array>
-#include <fstream>
-using namespace std;
+#include <iostream> //gives access to cout/endl
+#include <string> //gives access to string data type
+#include <array> //gives access to use arrays
+#include <fstream> //for ifstream
+#include <ctime> //for time random number generator
+#include <cstdlib> //for random numbers
+using namespace std; //able to exclude std::
 
 const int MINUTES = 20; //used for minutes of sim
 const int NAMES = 99; //used for # names in txt file
@@ -263,16 +265,25 @@ void finNames(array<string, NAMES>& names) {
     ifstream fin; //create fstream obj
     fin.open("names.txt"); //open "names.txt" file
 
-    string buf; //holds data one line at a time in txt file
-
     if (fin.good()) { //checks if file opened
         for (int i = 0; i < NAMES; i++) { //loops through each index in array
-            getline(fin, buf); //reads line one at a time from file to buf
-            names[i] = buf; //name at index is set to that line
+            getline(fin, names[i]); //reads line one at a time from file to names at index
         }
         fin.close(); //close file
     }
     else { //error message if file could not open
         cout << "File not found" << endl;
     }
+}
+
+void coutNames(array<string, NAMES>& names) {
+    for (int i = 0; i < NAMES; i++) { //loop through each name in array
+        cout << i + 1 << ". " << names[i] << endl; //cout name and +1 for pos number
+    }
+}
+
+string randName(array<string, NAMES>& names) {
+    int index = rand() % NAMES; //assigns random int 0 to NAMES - 1
+    
+    return names[index]; //return name at random pos
 }
