@@ -275,6 +275,32 @@ int main() {
     line.print(); //print names in line
     cout << endl;
 
+    for (int min = 2; min <= MINUTES; min++) {
+        cout << "Time step #" << min << ":" << endl; //print header message
+        int prob; //stores probability
+
+        if (prob <= 40 && line.size() > 0) { //40% chance front customer served
+
+        }
+
+        if (prob <= 60 && line.size() > 0) { //60% chance customer joins end of line
+
+        }
+
+        if (prob <= 20 && line.size() > 0) { //20% chance at end leaves
+
+        }
+
+        if (prob <= 10 && line.size() > 0) { //10% chamnce any customer leaves
+
+        }
+
+        if (prob <= 10) { //10% VIP cuts to front 
+
+        }
+
+
+    }
     
 }
 
