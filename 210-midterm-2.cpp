@@ -227,11 +227,11 @@ public:
     void print() {
         Node* current = head;
         if (!current) {
-            cout << "List is empty." << endl;
+            cout << "Line is empty." << endl;
             return;
         }
         while (current) {
-            cout << current->name << " ";
+            cout << "\t\t" << current->name << " ";
             current = current->next;
         }
         cout << endl;
@@ -240,7 +240,7 @@ public:
     void print_reverse() {
         Node* current = tail;
         if (!current) {
-            cout << "List is empty." << endl;
+            cout << "Line is empty." << endl;
             return;
         }
         while (current) {
@@ -256,9 +256,26 @@ void coutNames(array<string, NAMES>&); //cout names in array
 string randName(array<string, NAMES>&); //chooses and retunrs randome name from array
 
 int main() {
-   
+    srand(time(0)); //seeds random number generator
 
-    return 0;
+    array<string, NAMES> names; //array to store all names
+    finNames(names); //call function to populate array
+
+    DoublyLinkedList line; //empty customer line
+
+    cout << "Store opens:" << endl; //print message
+
+    for (int i = 0; i < 5; i++) { //adds 5 customers right away
+        string customer = randName(names); //store random name from list
+        line.push_back(customer); //creates new customer node and sends it to back of line
+        cout << "\t" << customer << " joins the line" << endl; //print message
+    }
+
+    cout << "\t Resulitng line:" << endl; //print message
+    line.print(); //print names in line
+    cout << endl;
+
+    
 }
 
 void finNames(array<string, NAMES>& names) {
