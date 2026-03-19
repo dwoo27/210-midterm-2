@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <array>
+#include <fstream>
 using namespace std;
 
 const int MINUTES = 20; //used for minutes of sim
@@ -256,4 +257,22 @@ int main() {
    
 
     return 0;
+}
+
+void finNames(array<string, NAMES>& names) {
+    ifstream fin; //create fstream obj
+    fin.open("names.txt"); //open "names.txt" file
+
+    string buf; //holds data one line at a time in txt file
+
+    if (fin.good()) { //checks if file opened
+        for (int i = 0; i < NAMES; i++) { //loops through each index in array
+            getline(fin, buf); //reads line one at a time from file to buf
+            names[i] = buf; //name at index is set to that line
+        }
+        fin.close(); //close file
+    }
+    else { //error message if file could not open
+        cout << "File not found" << endl;
+    }
 }
