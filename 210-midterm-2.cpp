@@ -231,7 +231,7 @@ public:
             return;
         }
         while (current) {
-            cout << "\t\t" << current->name << " ";
+            cout << "\t\t" << current->name << " " << endl;
             current = current->next;
         }
         cout << endl;
@@ -271,7 +271,7 @@ int main() {
         cout << "\t" << customer << " joins the line" << endl; //print message
     }
 
-    cout << "\t Resulitng line:" << endl; //print message
+    cout << "\tResulitng line:" << endl; //print message
     line.print(); //print names in line
     cout << endl;
 
@@ -286,7 +286,7 @@ int main() {
         }
 
         prob = rand() % 100 + 1; //returns random number 1-100
-        if (prob <= 60 && line.size() > 0) { //60% chance customer joins end of line
+        if (prob <= 60) { //60% chance customer joins end of line
             string customer = randName(names); //pick random name from file
             line.push_back(customer); //add customer at end of line
             cout << "\t" << customer << " joins the line" << endl; //output customer joined name
@@ -309,10 +309,10 @@ int main() {
         if (prob <= 10) { //10% VIP cuts to front 
             string vip = randName(names); // pick random name
             line.push_front(vip); //add vip to front
-            cout << "\t" << vip << " (VIP) joins the front of the line"; //output VIP name
+            cout << "\t" << vip << " (VIP) joins the front of the line" << endl; //output VIP name
         }
 
-        cout << "Resulting line: "; //print message
+        cout << "\tResulting line: " << endl; //print message
         line.print(); //output current line
         cout << endl;
     }
