@@ -26,19 +26,45 @@ public:
     DoublyLinkedList() { head = nullptr; tail = nullptr; }
 
     int size() { //returns number of customers in line
+        int count = 0; //stores number of customers
+        Node* current = head; //ptr to node to be counted, starting at head
 
+        while (current) { //while current is not null
+            count++; //update count
+            current = current->next; //move current up list
+        }
+
+        return count; //return count
     }
 
     string getHead() { //return head name
+        if (!head) { //check if line is empty
+            return "Line is empty."; //return statement
+        }
 
+        return head->name; //return name of first person in line
     }
 
     string getTail(){ //return tail name
+        if (!tail) { //check if line is empty
+            return "Line is empty."; //return statement
+        }
 
+        return tail->name;
     }
 
     string getAtPos(int p) { //return name at pos
+        if (p < 1 || p > size()) { //if pos is out of bounds
+            return "Invalid position."; //return error statemnt
+        }
 
+        Node* current = head; //ptr to node to be found, starting at head
+
+        for (int i = 1; i < p; i++) { //runs throough positions, starting at one until pos to be found
+            current = current->next; //moves current up list
+        }
+
+        return current->name; //return name of customer at post
     }
 
     void insert_after(string name, int position) {
