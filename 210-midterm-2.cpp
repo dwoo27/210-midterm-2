@@ -1,4 +1,6 @@
 #include <iostream>
+#include <string>
+#include <array>
 using namespace std;
 
 const int MINUTES = 20; //used for minutes of sim
@@ -7,11 +9,11 @@ const int NAMES = 99; //used for # names in txt file
 class DoublyLinkedList {
 private:
     struct Node {
-        int data;
+        string name;
         Node* prev;
         Node* next;
-        Node(int val, Node* p = nullptr, Node* n = nullptr) {
-            data = val;
+        Node(string nm, Node* p = nullptr, Node* n = nullptr) {
+            name = nm;
             prev = p;
             next = n;
         }
@@ -39,13 +41,13 @@ public:
 
     }
 
-    void insert_after(int value, int position) {
+    void insert_after(string name, int position) {
         if (position < 0) {
             cout << "Position must be >= 0." << endl;
             return;
         }
 
-        Node* newNode = new Node(value);
+        Node* newNode = new Node(name);
         if (!head) {
             head = tail = newNode;
             return;
@@ -70,12 +72,12 @@ public:
         temp->next = newNode;
     }
 
-    void delete_val(int value) {
+    void delete_name(string n) {
         if (!head) return;
 
         Node* temp = head;
 
-        while (temp && temp->data != value)
+        while (temp && temp->name != n)
             temp = temp->next;
 
         if (!temp) return;
@@ -130,7 +132,7 @@ public:
         delete temp;
     }
 
-    void push_back(int v) {
+    void push_back(string v) {
         Node* newNode = new Node(v);
         if (!tail)
             head = tail = newNode;
@@ -141,7 +143,7 @@ public:
         }
     }
 
-    void push_front(int v) {
+    void push_front(string v) {
         Node* newNode = new Node(v);
         if (!head)
             head = tail = newNode;
@@ -200,7 +202,7 @@ public:
             return;
         }
         while (current) {
-            cout << current->data << " ";
+            cout << current->name << " ";
             current = current->next;
         }
         cout << endl;
@@ -213,7 +215,7 @@ public:
             return;
         }
         while (current) {
-            cout << current->data << " ";
+            cout << current->name << " ";
             current = current->prev;
         }
         cout << endl;
@@ -222,6 +224,7 @@ public:
 
 void finNames(array<string, NAMES>&); //read names from txt file
 void coutNames(array<string, NAMES>&); //cout names in array
+string randName(array<string, NAMES>&); //chooses and retunrs randome name from array
 
 int main() {
    
