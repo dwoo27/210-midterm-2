@@ -281,31 +281,40 @@ int main() {
 
         prob = rand() % 100 + 1; //returns random number 1-100
         if (prob <= 40 && line.size() > 0) { //40% chance front customer served
-            cout << " \t\t\t" << line.getHead() << " is served" << endl; //output customer served name
+            cout << "\t" << line.getHead() << " is served" << endl; //output customer served name
             line.pop_front(); //remove customer
         }
 
         prob = rand() % 100 + 1; //returns random number 1-100
         if (prob <= 60 && line.size() > 0) { //60% chance customer joins end of line
-            cout << randName(names)
+            string customer = randName(names); //pick random name from file
+            line.push_back(customer); //add customer at end of line
+            cout << "\t" << customer << " joins the line" << endl; //output customer joined name
         }
 
         prob = rand() % 100 + 1; //returns random number 1-100
         if (prob <= 20 && line.size() > 0) { //20% chance at end leaves
-
+            cout << "\t" << line.getTail() << " exits the rear of the line" << endl; //output customer exited name
+            line.pop_back(); //remove rear customer
         }
 
         prob = rand() % 100 + 1; //returns random number 1-100
         if (prob <= 10 && line.size() > 0) { //10% chamnce any customer leaves
-
+            int pos = rand() % line.size() + 1; //random pos in line
+            cout << "\t" << line.getAtPos(pos) << " leaves the line" << endl; //output rand customer exited name
+            line.delete_pos(pos);
         }
 
         prob = rand() % 100 + 1; //returns random number 1-100
         if (prob <= 10) { //10% VIP cuts to front 
-
+            string vip = randName(names); // pick random name
+            line.push_front(vip); //add vip to front
+            cout << "\t" << vip << " (VIP) joins the front of the line"; //output VIP name
         }
 
-
+        cout << "Resulting line: "; //print message
+        line.print(); //output current line
+        cout << endl;
     }
     
 }
