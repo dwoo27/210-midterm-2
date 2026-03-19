@@ -1,8 +1,8 @@
 #include <iostream>
 using namespace std;
 
-const int MINUTES = 20;
-const int NAMES = 99;
+const int MINUTES = 20; //used for minutes of sim
+const int NAMES = 99; //used for # names in txt file
 
 class DoublyLinkedList {
 private:
@@ -22,6 +22,22 @@ private:
 
 public:
     DoublyLinkedList() { head = nullptr; tail = nullptr; }
+
+    int size() { //returns number of customers in line
+
+    }
+
+    string getHead() { //return head name
+
+    }
+
+    string getTail(){ //return tail name
+
+    }
+
+    string getAtPos(int p) { //return name at pos
+
+    }
 
     void insert_after(int value, int position) {
         if (position < 0) {
@@ -204,9 +220,11 @@ public:
     }
 };
 
-int main() {
-    cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS;  // dummy statement to avoid compiler warning
+void finNames(array<string, NAMES>&); //read names from txt file
+void coutNames(array<string, NAMES>&); //cout names in array
 
+int main() {
+   
 
     return 0;
 }
