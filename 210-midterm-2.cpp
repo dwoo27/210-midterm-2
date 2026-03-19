@@ -279,22 +279,28 @@ int main() {
         cout << "Time step #" << min << ":" << endl; //print header message
         int prob; //stores probability
 
+        prob = rand() % 100 + 1; //returns random number 1-100
         if (prob <= 40 && line.size() > 0) { //40% chance front customer served
-
+            cout << " \t\t\t" << line.getHead() << " is served" << endl; //output customer served name
+            line.pop_front(); //remove customer
         }
 
+        prob = rand() % 100 + 1; //returns random number 1-100
         if (prob <= 60 && line.size() > 0) { //60% chance customer joins end of line
-
+            cout << randName(names)
         }
 
+        prob = rand() % 100 + 1; //returns random number 1-100
         if (prob <= 20 && line.size() > 0) { //20% chance at end leaves
 
         }
 
+        prob = rand() % 100 + 1; //returns random number 1-100
         if (prob <= 10 && line.size() > 0) { //10% chamnce any customer leaves
 
         }
 
+        prob = rand() % 100 + 1; //returns random number 1-100
         if (prob <= 10) { //10% VIP cuts to front 
 
         }
